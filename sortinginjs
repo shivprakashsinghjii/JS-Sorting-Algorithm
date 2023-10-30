@@ -1,0 +1,41 @@
+// Example array of numbers to be sorted
+let numbers = [4, 2, 8, 1, 6, 3, 7];
+
+// Sorting the array in ascending order
+numbers.sort(function (a, b) {
+    return a - b;
+});
+
+console.log("Sorted in ascending order: " + numbers);
+
+// Sorting the array in descending order
+numbers.sort(function (a, b) {
+    return b - a;
+});
+
+console.log("Sorted in descending order: " + numbers);
+
+//custom sorting algorithm (quicksort) in JavaScript:
+function quickSort(arr) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+
+    const pivot = arr[0];
+    const left = [];
+    const right = [];
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < pivot) {
+            left.push(arr[i]);
+        } else {
+            right.push(arr[i]);
+        }
+    }
+
+    return quickSort(left).concat(pivot, quickSort(right));
+}
+
+let numbers = [4, 2, 8, 1, 6, 3, 7];
+let sortedNumbers = quickSort(numbers);
+console.log("Sorted with quicksort: " + sortedNumbers);
